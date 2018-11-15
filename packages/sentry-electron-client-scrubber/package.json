@@ -1,0 +1,19 @@
+{
+  "name": "sentry-electron-client-scrubber",
+  "version": "0.1.0",
+  "author": "Tim Fish",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "files": [
+    "/dist"
+  ],
+  "dependencies": {
+    "@sentry/core": "^4.3.0",
+    "@sentry/types": "^4.3.0",
+    "shortid": "^2.2.13"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.2",
+    "electron": "^3.0.7"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "extends": "@sentry/typescript/tslint",
+  "rules": {
+    "no-implicit-dependencies": [true, ["electron"]]
+  }
+}

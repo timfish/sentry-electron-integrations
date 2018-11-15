@@ -1,0 +1,24 @@
+{
+  "name": "sentry-electron-integrations",
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": "Tim Fish",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "tsc --build",
+    "fix": "prettier --write \"./**/*.ts\"",
+    "example": "cd packages/example-app && yarn start"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "devDependencies": {
+    "@sentry/typescript": "^4.0.1",
+    "prettier": "^1.15.2",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.6"
+  }
+}

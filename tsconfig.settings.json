@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "lib": ["es7", "dom"],
+    "target": "esnext",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "downlevelIteration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "pretty": true,
+    "sourceMap": true,
+    "strict": true
+  }
+}

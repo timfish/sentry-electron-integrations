@@ -1,0 +1,18 @@
+{
+  "name": "example-app",
+  "version": "1.0.0",
+  "description": "Integration Example App",
+  "private": true,
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "@sentry/electron": "https://github.com/timfish/sentry-electron.git#fdf7411",
+    "sentry-electron-opt-out": "0.1.0",
+    "sentry-electron-user-id": "0.1.0",
+    "sentry-electron-client-scrubber": "0.1.0"
+  },
+  "devDependencies": {
+    "electron": "^3.0.7"
+  }
+}

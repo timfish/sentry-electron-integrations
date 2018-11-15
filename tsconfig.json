@@ -1,0 +1,8 @@
+{
+  "files": [],
+  "references": [
+    { "path": "packages/sentry-electron-user-id" },
+    { "path": "packages/sentry-electron-opt-out" },
+    { "path": "packages/sentry-electron-client-scrubber" }
+  ]
+}

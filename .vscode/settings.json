@@ -1,0 +1,8 @@
+{
+  "editor.formatOnSave": true,
+  "tslint.autoFixOnSave": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/node_modules": true
+  }
+}
