@@ -1,6 +1,6 @@
 {
   "name": "sentry-electron-user-id",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Tim Fish",
   "license": "MIT",
   "main": "dist/index.js",
