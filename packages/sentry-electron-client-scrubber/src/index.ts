@@ -1,1 +1,1 @@
-export * from './electron-data-scrubber';
+export * from './electron-client-scrubber';
