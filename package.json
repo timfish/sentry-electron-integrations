@@ -5,6 +5,10 @@
   "author": "Tim Fish",
   "license": "MIT",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/timfish/sentry-electron-integrations.git"
+  },
   "scripts": {
     "build": "tsc --build",
     "fix": "prettier --write \"./**/*.ts\"",
