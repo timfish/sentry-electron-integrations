@@ -8,9 +8,9 @@
   },
   "dependencies": {
     "@sentry/electron": "https://github.com/timfish/sentry-electron.git#fdf7411",
-    "sentry-electron-opt-out": "0.1.0",
-    "sentry-electron-user-id": "0.1.0",
-    "sentry-electron-client-scrubber": "0.1.0"
+    "sentry-electron-opt-out": "0.0.1",
+    "sentry-electron-user-id": "0.0.1",
+    "sentry-electron-client-scrubber": "0.0.1"
   },
   "devDependencies": {
     "electron": "^3.0.7"
