@@ -1,7 +1,7 @@
 {
   "name": "sentry-electron-opt-out",
   "description": "A means of opting-out of error reporting from any process",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Tim Fish",
   "license": "MIT",
   "main": "dist/index.js",

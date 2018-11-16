@@ -1,7 +1,7 @@
 {
   "name": "sentry-electron-client-scrubber",
   "description": "Performs regex replace on strings in the Sentry event object",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Tim Fish",
   "license": "MIT",
   "main": "dist/index.js",
