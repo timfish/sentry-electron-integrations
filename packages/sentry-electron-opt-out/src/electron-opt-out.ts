@@ -14,6 +14,8 @@ export class ElectronOptOut implements Integration {
    */
   public static id: string = 'ElectronOptOut';
 
+  public constructor(private forceEnabled?: () => Promise<boolean>) {}
+
   /**
    * @inheritDoc
    */
@@ -25,7 +27,15 @@ export class ElectronOptOut implements Integration {
     addGlobalEventProcessor(
       // if the plugin is enabled and reporting is disabled, return null to
       // stop sending of the event
-      async event => (getCurrentHub().getIntegration(ElectronOptOut) && !(await isEnabled()) ? null : event),
+      async event => (getCurrentHub().getIntegration(ElectronOptOut) && !(await this.enabled()) ? null : event),
     );
+  }
+
+  private async enabled(): Promise<boolean> {
+    if (this.forceEnabled && (await this.forceEnabled())) {
+      return true;
+    }
+
+    return isEnabled();
   }
 }
