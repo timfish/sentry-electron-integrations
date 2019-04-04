@@ -1,18 +1,30 @@
 import { addGlobalEventProcessor, getCurrentHub } from '@sentry/core';
-import { Integration, User } from '@sentry/types';
+import { Integration } from '@sentry/types';
+import { Store } from '@sentry/utils/store';
+import { app, remote } from 'electron';
 import * as shortid from 'shortid';
 
 function generateId(): string {
   return shortid.generate().replace(/[-_]/g, '');
 }
 
+/**
+ * Generates a new ID
+ */
 export function renewUserId(): void {
-  getCurrentHub().configureScope(async scope => {
-    scope.setUser({ id: generateId() });
-  });
+  const store = new Store<string>((app || remote.app).getPath('userData'), 'id', generateId());
+  store.set(generateId());
 }
 
+/**
+ * Adds a unique ID to your events
+ */
 export class ElectronUserID implements Integration {
+  /**
+   * Store the ID
+   */
+  private store: Store<string> | undefined = undefined;
+
   /**
    * @inheritDoc
    */
@@ -32,15 +44,14 @@ export class ElectronUserID implements Integration {
     }
 
     addGlobalEventProcessor(async event => {
-      const self = getCurrentHub().getIntegration(ElectronUserID);
+      if (this.store === undefined) {
+        this.store = new Store<string>(app.getPath('userData'), 'id', generateId());
+      }
 
+      const self = getCurrentHub().getIntegration(ElectronUserID);
       if (self && (!event.user || !event.user.id)) {
         // Set the user.id on this event
-        event.user = { ...event.user, id: generateId() };
-        // And set the user.id on the scope
-        getCurrentHub().configureScope(scope => {
-          scope.setUser(event.user as User);
-        });
+        event.user = { ...event.user, id: this.store.get() };
       }
 
       return event;
