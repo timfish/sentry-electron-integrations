@@ -1,7 +1,7 @@
 {
   "name": "sentry-electron-user-id",
   "description": "Assigns a unique user id to each app install",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Tim Fish",
   "license": "MIT",
   "main": "dist/index.js",
