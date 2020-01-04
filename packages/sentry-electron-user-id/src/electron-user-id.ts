@@ -1,18 +1,24 @@
 import { addGlobalEventProcessor, getCurrentHub } from '@sentry/core';
 import { Integration } from '@sentry/types';
-import { Store } from '@sentry/utils/store';
 import { app, remote } from 'electron';
 import * as shortid from 'shortid';
+import { Store } from './store';
 
 function generateId(): string {
   return shortid.generate().replace(/[-_]/g, '');
+}
+
+let cachedStore: Store<string>;
+
+function getStore(): Store<string> {
+  return cachedStore || (cachedStore = new Store<string>((app || remote.app).getPath('userData'), 'id', generateId()));
 }
 
 /**
  * Generates a new ID
  */
 export function renewUserId(): void {
-  const store = new Store<string>((app || remote.app).getPath('userData'), 'id', generateId());
+  const store = getStore();
   store.set(generateId());
 }
 
@@ -20,11 +26,6 @@ export function renewUserId(): void {
  * Adds a unique ID to your events
  */
 export class ElectronUserID implements Integration {
-  /**
-   * Store the ID
-   */
-  private store: Store<string> | undefined = undefined;
-
   /**
    * @inheritDoc
    */
@@ -44,14 +45,10 @@ export class ElectronUserID implements Integration {
     }
 
     addGlobalEventProcessor(async event => {
-      if (this.store === undefined) {
-        this.store = new Store<string>(app.getPath('userData'), 'id', generateId());
-      }
-
       const self = getCurrentHub().getIntegration(ElectronUserID);
       if (self && (!event.user || !event.user.id)) {
         // Set the user.id on this event
-        event.user = { ...event.user, id: this.store.get() };
+        event.user = { ...event.user, id: getStore().get() };
       }
 
       return event;

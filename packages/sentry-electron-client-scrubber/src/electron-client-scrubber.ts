@@ -1,5 +1,5 @@
 import { addGlobalEventProcessor, getCurrentHub } from '@sentry/core';
-import { Integration, SentryEvent } from '@sentry/types';
+import { Event, Integration } from '@sentry/types';
 
 interface KeyObj {
   [key: string]: string | KeyObj;
@@ -17,7 +17,7 @@ export class ElectronClientScrubber implements Integration {
    */
   public static id: string = 'ElectronDataScrubber';
 
-  private replacements: Array<[RegExp, string]>;
+  private readonly replacements: Array<[RegExp, string]>;
 
   public constructor(...replacements: Array<[RegExp, string]>) {
     this.replacements = replacements;
@@ -38,7 +38,7 @@ export class ElectronClientScrubber implements Integration {
     );
   }
 
-  private recursiveRegexReplace(event: SentryEvent, replace: [RegExp, string]): SentryEvent {
+  private recursiveRegexReplace(event: Event, replace: [RegExp, string]): Event {
     if (event) {
       const obj = event as KeyObj;
 

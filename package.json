@@ -23,6 +23,6 @@
     "@sentry/typescript": "^4.0.1",
     "prettier": "^1.15.2",
     "tslint": "^5.11.0",
-    "typescript": "^3.1.6"
+    "typescript": "^3.6.4"
   }
 }
