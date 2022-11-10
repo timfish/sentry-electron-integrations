@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@types/node": "^10.12.2",
-    "electron": "^3.0.7"
+    "electron": "^18.3.7"
   },
   "repository": {
     "type": "git",
